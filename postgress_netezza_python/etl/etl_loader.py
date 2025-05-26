@@ -1,17 +1,16 @@
 # Si tienes helpers, puedes importar de .utils
+import configparser
+import csv
 import logging
+import os
+import tempfile
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-import tempfile
-import csv
-import configparser
-import os
 from .config_reader import ExcelTableConfigReader
 from .netezza_connection import NetezzaConnection
 from .postgres_connection import PostgresConnection
-
 
 # Configuración de logging (igual que en migracion.py)
 logging.basicConfig(
@@ -39,6 +38,7 @@ ALTERNATIVE_SEPARATORS = [
     "Δ",
     "‡",
 ]
+
 
 class NetezzaETLLoader:
     """
@@ -99,15 +99,6 @@ class NetezzaETLLoader:
             return sum(1 for _ in f) - 1  # menos la cabecera
 
     def _conteo_base_destino(self):
-        # Cuenta los registros realmente mergeados (insertados o actualizados)
-        # Si tu MERGE no devuelve el conteo, puedes hacer lo siguiente:
-        # 1. Antes del MERGE, cuenta los registros en la tabla de producción
-        # 2. Después del MERGE, cuenta de nuevo y la diferencia son los insertados
-        #    Pero para actualizados, necesitas que el MERGE devuelva el número de filas afectadas.
-        # Lo más práctico: usa rowcount del execute_command del MERGE si tu driver lo soporta.
-        # Si no, puedes guardar el conteo en una variable al ejecutar el MERGE.
-        # Aquí un ejemplo suponiendo que tienes self.merge_rowcount:
-
         # Usa el timestamp de la carga actual
         upload_col = "UPLOAD_DATE"
         query = f"""
