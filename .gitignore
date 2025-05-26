@@ -1,0 +1,15 @@
+
+# Ignorar todos los archivos CSV
+*.csv
+
+# Ignorar todos los archivos Excel
+*.xls
+*.xlsx
+*.xlsm # También es buena idea incluir archivos Excel con macros
+
+# Ignorar los logs
+*.log
+
+# Ignorar el config.ini
+/postgress_netezza_python/config.ini
+
