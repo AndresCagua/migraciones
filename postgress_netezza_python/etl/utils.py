@@ -1,7 +1,7 @@
 import csv
 import logging
 
-# Configuración de logging (igual que en migracion.py)
+# Configuración de logging
 logging.basicConfig(
     level=logging.INFO,
     filename="libraries.log",

@@ -4,7 +4,7 @@ from typing import Any, Dict, List, Optional
 
 import pandas as pd
 
-# Configuración de logging (igual que en migracion.py)
+# Configuración de logging
 logging.basicConfig(
     level=logging.INFO,
     filename="libraries.log",

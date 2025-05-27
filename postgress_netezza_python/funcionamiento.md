@@ -1,7 +1,7 @@
 ---
 # Proceso de Migración de Datos: PostgreSQL → Netezza
 
-Este proyecto implementa un pipeline ETL (Extract, Transform, Load) robusto para migrar datos desde una base de datos PostgreSQL hacia Netezza, utilizando Python como orquestador y un archivo Excel para la configuración dinámica de tablas y columnas. El proceso está pensado para cargas incrementales y seguras, con validaciones y bitácora de auditoría.
+Este proyecto implementa un pipeline ETL (Extract, Transform, Load) robusto para migrar datos desde una base de datos PostgreSQL hacia Netezza, utilizando Python como orquestador y un archivo Excel para la configuración dinámica de tablas y columnas. El proceso está pensado para cargas full/incrementales y seguras, con validaciones y bitácora de auditoría.
 ---
 
 ## Arquitectura General
@@ -92,7 +92,7 @@ El flujo sigue la siguiente secuencia:
 ## Ejemplo de Ejecución
 
 ```bash
-python main.py pedidos path/configuracion.xlsx --output_dir output --config_file example.ini --verbose
+python3 main.py pedidos path/configuracion.xlsx --output_dir output --config_file example.ini --verbose
 ```
 
 - `pedidos`: Nombre de la tabla destino en Netezza (debe coincidir con una hoja en el Excel).

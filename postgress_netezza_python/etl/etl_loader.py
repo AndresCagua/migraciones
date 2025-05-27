@@ -12,7 +12,7 @@ from .config_reader import ExcelTableConfigReader
 from .netezza_connection import NetezzaConnection
 from .postgres_connection import PostgresConnection
 
-# Configuración de logging (igual que en migracion.py)
+# Configuración de logging
 logging.basicConfig(
     level=logging.INFO,
     filename="libraries.log",

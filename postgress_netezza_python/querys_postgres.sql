@@ -10,7 +10,7 @@ CREATE TABLE clientes (
     ciudad VARCHAR(50),
     pais VARCHAR(50),
     codigo_postal VARCHAR(20),
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_registro DATE,
     activo BOOLEAN DEFAULT TRUE
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE clientes (
 CREATE TABLE pedidos (
     id_pedido SERIAL PRIMARY KEY,
     id_cliente INTEGER REFERENCES clientes(id_cliente),
-    fecha_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_pedido DATE,
     fecha_entrega DATE,
     estado VARCHAR(20) CHECK (estado IN ('pendiente', 'en_proceso', 'completado', 'cancelado')),
     total NUMERIC(10, 2) NOT NULL,
